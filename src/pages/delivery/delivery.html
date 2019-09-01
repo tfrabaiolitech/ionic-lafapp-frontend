@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tipo de Entrega</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="formGroup" (ngSubmit)="nextPage(); $event.preventDefault()">
+    <ion-list radio-group formControlName="@type">
+      <ion-list-header>
+        Tipo de Entrega
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Entrega ao Dono</ion-label>
+        <ion-radio checked="true" value="deliveryPerson"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Entrega à PSP</ion-label>
+        <ion-radio value="deliveryPSP"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngIf="formGroup.value['@type'] == 'deliveryPerson'">
+      <ion-label stacked>Parcelas no boleto</ion-label>
+      
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Próximo</button>
+  </form>
+</ion-content>

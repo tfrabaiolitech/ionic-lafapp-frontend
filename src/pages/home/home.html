@@ -1,0 +1,19 @@
+<ion-content padding>
+  
+  <h3>Sistema Perdidos e Achados </h3>
+
+  <img src="assets/imgs/laf-icon.png" alt="logo">
+  <form>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" [(ngModel)]= "creds.email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password"[(ngModel)]="creds.senha" name="senha"></ion-input>
+    </ion-item>
+    <button ion-button block (click)='login()'>Entrar</button>
+  </form>
+  <button ion-button block outline (click)="signup()">Registrar novo vigilante</button>
+
+</ion-content>

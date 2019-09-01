@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Confira seu pedido</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      Itens do pedido
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item *ngFor="let item of cartItems">
+        <ion-thumbnail item-start>
+          <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
+        </ion-thumbnail>
+        <p>{{item.produto.id}}</p>
+        <h2>{{item.produto.description}}</h2>
+        <h2>{{item.produto.whoFind}}</h2>
+        <h2>{{item.produto.localFind}}</h2>
+        <h2>{{item.produto.dateFind}}</h2>
+        <p class="nolinebreak">{{item.quantidade}}</p>
+       
+      </ion-item> 
+
+    </ion-list> 
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        Vigilante
+      </ion-card-header>
+      <ion-item>
+        <h2>{{cliente?.nome}}</h2>
+        <p>{{cliente?.email}}</p>
+      </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Endereço de entrega
+    </ion-card-header>
+
+    <ion-item>
+       <p>{{address?.complemento}} CEP {{address?.cep}}</p> 
+      <p>{{address?.city.nome}}, {{address?.city.state.nome}}</p> 
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+     Tipo de Entrega
+    </ion-card-header>
+
+    <ion-item *ngIf="lost.delivery['@type']=='deliveryPerson'">
+      <h3>Entrega ao Dono</h3>
+     
+    </ion-item>
+    <ion-item *ngIf="lost.delivery['@type']=='deliveryPSP'">
+      <h3>Entrega à PSP</h3>
+    </ion-item>
+  </ion-card>
+
+  <button ion-button block (click)="checkout()">Confirmar pedido</button>
+  <button ion-button block outline (click)="back()">Voltar</button>
+</ion-content>
